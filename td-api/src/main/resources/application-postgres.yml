@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tinder-pet
+    username: crisgvera
+    password: 12345
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create
