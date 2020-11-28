@@ -3,8 +3,6 @@ package cl.crisgvera.tdapi.service;
 import cl.crisgvera.tdapi.dto.BCustomerDto;
 import cl.crisgvera.tdapi.dto.ECustomerDto;
 import cl.crisgvera.tdapi.model.Customer;
-import cl.crisgvera.tdapi.model.Order;
-import cl.crisgvera.tdapi.model.OrderDetail;
 import cl.crisgvera.tdapi.repository.CustomerRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -23,6 +21,7 @@ public class CustomerService {
     }
 
     public Collection<Customer> findAll() {
+        log.info("[CustomerService] findAll");
         return customerRepository.findAll();
     }
 
@@ -40,6 +39,7 @@ public class CustomerService {
     }
 
     public Collection<ECustomerDto> getAllCustomersOrdersTotalFilteredByYear(int year) {
+        log.info("[CustomerService] getAllCustomersOrdersTotalFilteredByYear | year = " + year);
         Collection<Customer> customers = findAll();
         return customers.stream()
                 .map(customer -> ECustomerDto.builder()
@@ -50,6 +50,7 @@ public class CustomerService {
     }
 
     private Double getOrdersTotal(Customer customer, int filterYear) {
+        log.info("[CustomerService] _getOrdersTotal | customer" + customer + " - filterYear = " + filterYear);
         return customer.getOrders()
                 .stream()
                 .filter(order -> order.getOrderDate().getYear() == filterYear)

@@ -2,7 +2,6 @@ package cl.crisgvera.tdapi.controller;
 
 import cl.crisgvera.tdapi.dto.BCustomerDto;
 import cl.crisgvera.tdapi.dto.ECustomerDto;
-import cl.crisgvera.tdapi.model.Customer;
 import cl.crisgvera.tdapi.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 

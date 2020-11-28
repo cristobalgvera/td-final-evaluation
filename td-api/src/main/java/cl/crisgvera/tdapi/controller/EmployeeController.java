@@ -20,8 +20,14 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public Collection<Employee> findAllByJobTitle(@RequestParam(defaultValue = "Sales Manager") String jobTitle) {
+    public Collection<Employee> findAllByJobTitle(@RequestParam(defaultValue = "Manager") String jobTitle) {
         return employeeService.findAllByJobTitle(jobTitle);
+    }
+
+    @GetMapping("/get-by/office")
+    public Collection<Employee> findAllByOfficeCityAndParentId(@RequestParam(defaultValue = "") String city,
+                                                               @RequestParam(defaultValue = "") Long parentEmployeeId) {
+        return employeeService.findAllByOfficeCityAndParentId(city, parentEmployeeId);
     }
 
     @GetMapping("/get-by")

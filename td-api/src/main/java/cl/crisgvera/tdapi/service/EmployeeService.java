@@ -31,6 +31,20 @@ public class EmployeeService {
                 .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
+    public Collection<Employee> findAllByOfficeCityAndParentId(String officeCity, Long parentEmployeeId) {
+        log.info("[EmployeeService] findAllByOfficeCityAndParentId");
+        if (parentEmployeeId == null && officeCity.equals(""))
+            return findAllByJobTitle("Sales Rep");
+
+        if (parentEmployeeId == null)
+            return employeeRepository.findEmployeesByOffice_City(officeCity);
+
+        if (officeCity.equals(""))
+            return employeeRepository.findEmployeesByParentEmployee_Id(parentEmployeeId);
+
+        return employeeRepository.findAllByOfficeCityAndParentId(officeCity, parentEmployeeId);
+    }
+
     public Collection<AEmployeeDto> getAllEmployeesByJobTitleFilteredByADto(String jobTitle) {
         log.info("[EmployeeService] getAllEmployeesByJobTitle | jobTitle = " + jobTitle);
         Collection<Employee> employees = employeeRepository.findEmployeesByJobTitleContains(jobTitle);

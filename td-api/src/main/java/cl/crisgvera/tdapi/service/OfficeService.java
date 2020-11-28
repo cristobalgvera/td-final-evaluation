@@ -24,6 +24,7 @@ public class OfficeService {
     }
 
     public Collection<Office> findAll() {
+        log.info("[OfficeService] findAll");
         return officeRepository.findAll()
                 .stream()
                 .sorted(Comparator.comparing(Office::getCity))
