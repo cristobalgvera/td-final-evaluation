@@ -2,7 +2,7 @@ package cl.crisgvera.tdapi.common;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import static cl.crisgvera.tdapi.common.ServiceConstant.*;
+import static cl.crisgvera.tdapi.common.ServiceConstant.ENTITY_WITH_ID;
 
 public class Util {
     static void checkExistence(Long id,

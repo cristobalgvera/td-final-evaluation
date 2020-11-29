@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.sql.Clob;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;

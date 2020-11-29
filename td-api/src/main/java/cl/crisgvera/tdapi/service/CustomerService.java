@@ -7,7 +7,8 @@ import cl.crisgvera.tdapi.repository.CustomerRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
 
 @Service

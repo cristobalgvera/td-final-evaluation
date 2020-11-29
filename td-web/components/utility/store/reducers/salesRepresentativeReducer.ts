@@ -15,9 +15,9 @@ const SalesRepresentativesReducer = ( state: ISalesRepresentative[], { type, pay
     }
 };
 
-const setSalesRepresentative = (payload: Payload ) => {
+const setSalesRepresentative = ( payload: Payload ) => {
     if (payload) {
-        return [payload];
+        return [...payload];
     }
 };
 

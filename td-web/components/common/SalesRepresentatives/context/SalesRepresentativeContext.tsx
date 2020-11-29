@@ -16,7 +16,6 @@ export const SalesRepresentativesContext = createContext<ISalesRepresentativesCo
 const SalesRepresentativesContextProvider: FC = ( { children } ) => {
     const [salesRepresentatives, dispatchSalesRepresentatives] = useReducer(SalesRepresentativesReducer, initialSalesRepresentativesStates);
 
-    console.log(salesRepresentatives);
     return (
         <SalesRepresentativesContext.Provider value={{
             dispatchSalesRepresentatives,

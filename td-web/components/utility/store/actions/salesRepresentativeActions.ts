@@ -3,7 +3,7 @@ import { ISalesRepresentativeActions } from './interfaces/ISalesRepresentativeSt
 
 const setSalesRepresentatives = ( salesRepresentatives: ISalesRepresentative[] ): ISalesRepresentativeActions => ({
     type: 'SET_SALES_REPRESENTATIVES',
-    payload: salesRepresentatives,
+    payload: salesRepresentatives ,
 });
 
 export { setSalesRepresentatives };

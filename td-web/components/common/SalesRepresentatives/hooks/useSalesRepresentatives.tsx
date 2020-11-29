@@ -57,7 +57,7 @@ const useSalesRepresentative = () => {
         let cityQuery = 'city';
         let parentIdQuery = 'parentEmployeeId';
 
-        if (city) cityQuery += `=${city}`;
+        if (city && city !== '0') cityQuery += `=${city}`;
         if (parentId) parentIdQuery += `=${parentId}`;
 
         const query = `/employees/get-by/office?${cityQuery}&${parentIdQuery}`;

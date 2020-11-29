@@ -1,7 +1,9 @@
-import React, { ChangeEvent, FunctionComponent, useCallback, useEffect, useState } from 'react';
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { IAppContext } from '../../../../utility/context/interfaces/IAppContext';
 import Select from './Input/Select';
 import useSalesRepresentative from '../../hooks/useSalesRepresentatives';
+
+import style from './Selector.module.scss';
 
 type Props = IAppContext;
 
@@ -10,24 +12,27 @@ const Selector: FunctionComponent<Props> = ( { salesManagers, offices } ) => {
     const [parentId, setParentId] = useState<number>(null);
     const { logic: { filter } } = useSalesRepresentative();
 
-    useEffect(() => filter({city, parentId}), [city, parentId]);
+    useEffect(() => filter({ city, parentId }), [city, parentId]);
 
-    const handleParentIdChange = useCallback(( { target: { value } }: ChangeEvent<HTMLSelectElement> ) => {
-        setParentId(Number(value));
+    const handleParentIdChange = useCallback(( value: number ) => {
+        const toSet = value ? Number(value) : null
+        setParentId(toSet);
     }, []);
 
-    const handleCityChange = useCallback(( { target: { value } }: ChangeEvent<HTMLSelectElement> ) => {
+    const handleCityChange = useCallback(( value: string ) => {
         setCity(value);
     }, []);
 
     return (
-        <div>
+        <div className={style.Selector}>
+            <div className={style.Divisor}>
             <Select
                 defaultMessage={'Select a city'}
                 value={city}
-                array={offices.map(( { city } ) => ({
-                    id: city,
+                array={offices.map(( { city, id } ) => ({
+                    id: id,
                     displayName: city,
+                    val: city,
                 }))}
                 change={handleCityChange}
             />
@@ -35,11 +40,13 @@ const Selector: FunctionComponent<Props> = ( { salesManagers, offices } ) => {
                 value={parentId}
                 defaultMessage={'Select a sale manager'}
                 array={salesManagers.map(( { id, lastName, firstName } ) => ({
-                    id,
+                    id: id,
                     displayName: `${firstName} ${lastName}`,
+                    val: id,
                 }))}
                 change={handleParentIdChange}
             />
+            </div>
         </div>
     );
 };
